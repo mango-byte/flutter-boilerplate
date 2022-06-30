@@ -11,7 +11,7 @@ class AuthDataSourceImpl implements AuthDataSource {
 
   @override
   Future<RegisterModel> register(String username, String password) async {
-    final response = await RestService().request(url: 'url', method: Method.post, param: {
+    final response = await RestService.request(url: 'url', method: Method.post, param: {
       'email' : username,
       'password' : password
     });
