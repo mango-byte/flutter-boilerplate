@@ -1,16 +1,24 @@
-# untitled2
+# flutterapp
 
-A new Flutter project.
+## Run project:
+- To run in development env:   ``flutter run -t lib/main_dev.dart --flavor dev``
+- To run in staging env:       ``flutter run -t lib/main_stg.dart --flavor stg``
+- To run in production env:    ``flutter run -t lib/main_prod.dart --flavor prod``
+- **NOTE:** To run in release mod, just add ``--release`` at the end of command.
 
-## Getting Started
+## Build project:
+1. Android:
+    - Development:  ``flutter build apk -t lib/main_dev.dart --flavor dev --release``
+    - Staging:      ``flutter build apk -t lib/main_stg.dart --flavor stg --release``
+    - Production:   ``flutter build apk -t lib/main_prod.dart --flavor prod --release``
+    - **NOTE:** Make sure you have config the key.properties for the build release with keystore. The keystore is already at the ``android/app`` already. The directory for the apk file will be in the project ``build/app/outputs/flutter-apk`` (this might change in the next future, check the terminal after build it will show you where the apk file is)
 
-This project is a starting point for a Flutter application.
+2. iOS:
+    - Development:  ``flutter build ios -t lib/main_dev.dart --flavor dev --release && open ios/Runner.xcworkspace``
+    - Staging:      ``flutter build ios -t lib/main_stg.dart --flavor stg --release && open ios/Runner.xcworkspace``
+    - Production:   ``flutter build ios -t lib/main_prod.dart --flavor prod --release && open ios/Runner.xcworkspace``
+    - **NOTE:** After
 
-A few resources to get you started if this is your first Flutter project:
+flutter run --flavor dev -t lib/main_dev.dart
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+flutter run --flavor staging -t lib/main_staging.dart
