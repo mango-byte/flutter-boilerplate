@@ -1,0 +1,13 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:boilerplate/presentation/bloc/login/login_event.dart';
+import 'package:boilerplate/presentation/bloc/login/login_state.dart';
+
+class LoginBloc extends Bloc<LoginEvent, LoginState> {
+  LoginBloc(LoginState initialState) : super(initialState) {
+    on<LoginEvent>((event, emit) => _addToValue());
+  }
+
+  void _addToValue() {
+
+  }
+}
