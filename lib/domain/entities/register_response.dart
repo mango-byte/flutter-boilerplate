@@ -2,15 +2,15 @@ import 'package:equatable/equatable.dart';
 
 class RegisterResponse extends Equatable {
   const RegisterResponse({
-    required this.username,
-    required this.accessToken,
-    required this.refreshToken,
+    required this.email,
+    required this.firstName,
+    required this.lastName,
   });
 
-  final String username;
-  final String accessToken;
-  final String refreshToken;
+  final String email;
+  final String firstName;
+  final String lastName;
 
   @override
-  List<Object?> get props => [username, accessToken, refreshToken];
+  List<Object?> get props => [email, firstName, lastName];
 }

@@ -7,24 +7,21 @@ import 'package:boilerplate/config/util/shared_pref_util.dart';
 enum Method { post, get, put, delete }
 
 class RestService {
-  static Future<Response> request({
+  Future<Response> request({
     @required required String url,
     @required required Method method,
     Map<String, dynamic>? param}) async {
 
     final token = await SharedPrefUtil.getString(PrefKey.TOKEN);
-    final _dio = Dio(BaseOptions(headers: {
-      HttpHeaders.contentTypeHeader: 'application/json',
-      HttpHeaders.authorizationHeader: 'Bearer $token'
-    }));
+    final dio = Dio();
 
     Response response;
     try {
       switch (method) {
-        case Method.get:    response = await _dio!.get(url, queryParameters: param);break;
-        case Method.post:   response = await _dio!.post(url, data: param); break;
-        case Method.put:    response = await _dio!.put(url, data: param); break;
-        case Method.delete: response = await _dio!.delete(url, data: param); break;
+        case Method.get:    response = await dio.get(url, queryParameters: param);break;
+        case Method.post:   response = await dio.post(url, data: param); break;
+        case Method.put:    response = await dio.put(url, data: param); break;
+        case Method.delete: response = await dio.delete(url, data: param); break;
       }
       switch (response.statusCode) {
         case 200: return response;

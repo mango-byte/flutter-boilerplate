@@ -4,7 +4,7 @@ import 'package:boilerplate/main.dart';
 
 void main() {
   const AppConfig _app = AppConfig(
-    apiBaseUrl: '',
+    apiBaseUrl: 'https://api-nodejs-todolist.herokuapp.com',
     child: MainApp(),
   );
   runApp(_app);

@@ -4,7 +4,7 @@ import 'package:boilerplate/main.dart';
 
 void main() {
   const AppConfig _app = AppConfig(
-    apiBaseUrl: '',
+    apiBaseUrl: 'http://localhost:8081',
     child: MainApp(),
   );
   runApp(_app);

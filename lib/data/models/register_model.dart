@@ -1,29 +1,39 @@
-import 'package:equatable/equatable.dart';
 import 'package:boilerplate/domain/entities/register_response.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 
 class RegisterModel extends Equatable {
-  const RegisterModel({
-    required this.username,
-    required this.accessToken,
-    required this.refreshToken
+  RegisterModel({
+    @required required this.id,
+    @required required this.email,
+    @required required this.firstName,
+    @required required this.lastName,
+    @required required this.createdAt,
+    @required this.updatedAt
   });
 
   factory RegisterModel.fromJson(dynamic json) => RegisterModel(
-      username: json['username'] as String,
-      accessToken: json['access_token'] as String,
-      refreshToken: json['refresh_token'] as String
+    id: json['id'] as int,
+    email: json['email'] as String,
+    firstName: json['firstName'] as String,
+    lastName: json['lastName'] as String,
+    createdAt: json['createdAt'] as String,
+    updatedAt: json['updatedAt'] as String
   );
 
   RegisterResponse toEntity() => RegisterResponse(
-      username: username, 
-      accessToken: accessToken, 
-      refreshToken: refreshToken
+      email: email,
+      firstName: firstName,
+      lastName: lastName
   );
 
-  final String username;
-  final String accessToken;
-  final String refreshToken;
+  int id;
+  String email;
+  String firstName;
+  String lastName;
+  String createdAt;
+  String? updatedAt;
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }

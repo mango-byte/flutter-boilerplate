@@ -16,4 +16,9 @@ mixin ConstantColors {
   static Color secondary =      const Color(0xFF31C782);
   static Color shadowColor =    const Color(0x33000000);
   static Color white =          const Color(0xFFFFFFFF);
+
+  static const kBlueColor = Color(0xFF3C82FF);
+  static const kBlackColor = Color(0xFF000000);
+  static const kwhiteColor = Color(0xFFFFFFFF);
+  static const kDarkblack = Color(0xFF8B959A);
 }

@@ -1,3 +1,4 @@
+import 'package:boilerplate/data/dio/dio_endpoint.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -5,7 +6,6 @@ import 'package:boilerplate/config/app_config.dart';
 import 'package:boilerplate/config/app_route.dart';
 import 'package:boilerplate/config/localization/translator_delegate.dart';
 import 'package:boilerplate/config/util/shared_pref_util.dart';
-import 'package:boilerplate/data/datasources/rest_endpoint.dart';
 import 'package:boilerplate/config/application.dart';
 
 class MainApp extends StatefulWidget {
@@ -28,7 +28,7 @@ class _MainAppState extends State<MainApp> {
 
   @override
   void didChangeDependencies() {
-    RestEndpoint(AppConfig.of(context)!.apiBaseUrl!);
+    DioEndpoint(AppConfig.of(context)!.apiBaseUrl!);
     super.didChangeDependencies();
   }
 
@@ -49,7 +49,7 @@ class _MainAppState extends State<MainApp> {
       supportedLocales: application.supportedLocales,
       navigatorKey: application.navigatorKey,
       routes: AppRoute.routes,
-      initialRoute: AppRoute.SPLASH_SCREEN,
+      initialRoute: AppRoute.splashScreen,
     );
   }
 

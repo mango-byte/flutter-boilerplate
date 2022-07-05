@@ -1,0 +1,52 @@
+import 'package:flutter/material.dart';
+
+class AuthTextField extends StatelessWidget {
+  const AuthTextField({
+    required Key key,
+    this.hint = '',
+    @required this.onChanged,
+    @required this.keyboardType,
+    this.isPasswordField = false,
+    this.isRequiredField = false,
+    this.error,
+    this.initialValue,
+    this.padding = const EdgeInsets.all(0),
+    required this.controller
+  }) : super(key: key);
+
+  final String hint;
+  final ValueChanged<String>? onChanged;
+  final TextInputType? keyboardType;
+  final bool isPasswordField;
+  final bool isRequiredField;
+  final String? error;
+  final EdgeInsets padding;
+  final String? initialValue;
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: padding,
+      child: TextFormField(
+        controller: controller,
+        initialValue: initialValue,
+        keyboardType: keyboardType,
+        decoration: InputDecoration(
+          fillColor: Colors.white,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+          filled: true,
+          hintText: isRequiredField ? '$hint*' : hint,
+          border: InputBorder.none,
+          errorText: error,
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+        ),
+        autocorrect: false,
+        textInputAction: TextInputAction.done,
+        obscureText: isPasswordField,
+        maxLines: 1,
+        onChanged: onChanged,
+      ),
+    );
+  }
+}
