@@ -1,7 +1,5 @@
 
-import 'dart:developer';
 
-import 'package:boilerplate/config/app_route.dart';
 import 'package:boilerplate/config/util/TransitionUtil.dart';
 import 'package:boilerplate/data/datasources/auth_datasource.dart';
 import 'package:boilerplate/data/dio/dio_service.dart';
@@ -100,6 +98,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ],
                     ),
                   ),
+                  
                   BlocBuilder<RegisterBloc, RegisterState>(
                     builder: (context, state) {
                       return Column(
@@ -128,7 +127,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ],
               ),
             )
+
         ),
+
       ),
     );
   }
