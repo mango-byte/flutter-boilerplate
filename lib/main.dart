@@ -36,10 +36,8 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          primaryColor: Colors.red,
-          fontFamily: 'OpenSans, Regular'
-      ),
+      theme:
+          ThemeData(primaryColor: Colors.red, fontFamily: 'OpenSans, Regular'),
       localizationsDelegates: [
         _translatorDelegate,
         GlobalMaterialLocalizations.delegate,
@@ -63,7 +61,7 @@ class _MainAppState extends State<MainApp> {
   void _changeLanguageCallback(Locale locale) {
     SharedPrefUtil.setValue(
       PrefType.STRING,
-      PrefKey.LANGUAGE_CODE,
+      PrefKey.languageCode,
       locale.languageCode,
     );
     setState(() {
@@ -72,7 +70,7 @@ class _MainAppState extends State<MainApp> {
   }
 
   Future<void> _translateLanguage() async {
-    final code = await SharedPrefUtil.getString(PrefKey.LANGUAGE_CODE);
+    final code = await SharedPrefUtil.getString(PrefKey.languageCode);
     setState(() {
       _translatorDelegate = const TranslatorDelegate(Locale('ja'));
     });

@@ -41,4 +41,4 @@ mixin SharedPrefUtil {
 
 enum PrefType { INT, STRING, DOUBLE, BOOL, STRING_LIST }
 
-enum PrefKey { TOKEN, LANGUAGE_CODE }
+enum PrefKey { token, languageCode, refreshToken }

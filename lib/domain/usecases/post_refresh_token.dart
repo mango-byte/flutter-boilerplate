@@ -4,32 +4,32 @@ import 'package:boilerplate/domain/usecases/use_case.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-class PostGenerateToken implements UseCase {
-  PostGenerateToken({required this.repository});
+class PostRefreshToken implements UseCase {
+  PostRefreshToken({required this.repository});
   final AuthRepository repository;
 
   @override
   Future<Either<Failure, dynamic>> call(request) async {
-    return await repository.generateToken(request);
+    return await repository.refreshToken(request);
   }
 }
 
-class TokenRequest extends Equatable {
-  const TokenRequest({
+class RefreshTokenRequest extends Equatable {
+  const RefreshTokenRequest({
     required this.email,
-    required this.password,
+    required this.refreshToken,
   });
 
   Map<String, dynamic> toJson() => {
-        'username': email,
-        'password': password,
+        'email': email,
+        'refreshToken': refreshToken,
       };
   final String email;
-  final String password;
+  final String refreshToken;
 
   @override
   List<Object?> get props => [
         email,
-        password,
+        refreshToken,
       ];
 }
