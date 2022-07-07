@@ -1,15 +1,15 @@
-import 'dart:developer';
-import 'package:boilerplate/config/util/shared_pref_util.dart';
 import 'package:boilerplate/data/dio/dio_endpoint.dart';
 import 'package:boilerplate/data/dio/dio_service.dart';
 import 'package:boilerplate/data/models/register_model.dart';
 import 'package:boilerplate/data/models/token_model.dart';
+import 'package:boilerplate/domain/usecases/post_refresh_token.dart';
 import 'package:boilerplate/domain/usecases/post_register_user.dart';
 
 abstract class AuthDataSource {
   Future<String> verifyEmail(String email);
   Future<RegisterModel> register(RegisterRequest request);
   Future<TokenModel> generateToken(String email, String password);
+  Future<TokenModel> refreshToken(RefreshTokenRequest request);
 }
 
 class AuthDataSourceImpl implements AuthDataSource {
@@ -38,8 +38,18 @@ class AuthDataSourceImpl implements AuthDataSource {
         url: DioEndpoint.instance.generateToken,
         method: Method.post,
         credentials: '$email:$password');
-    log(response.toString());
-
     return TokenModel.fromJson(response.data);
   }
+
+  @override
+  Future<TokenModel> refreshToken(RefreshTokenRequest request) async {
+    final response = await service.request(
+        url: DioEndpoint.instance.refreshtoken,
+        method: Method.post,
+        param: request.toJson()
+        );
+    return TokenModel.fromJson(response.data);
+  }
+
+
 }

@@ -16,4 +16,5 @@ class DioEndpoint {
   String get verifyEmail => '$_apiBaseUrl/account/verifyEmail';
   String get register => '$_apiBaseUrl/account';
   String get generateToken => '$_apiBaseUrl/token/generate';
+  String get refreshtoken => '$_apiBaseUrl/token/refresh';
 }

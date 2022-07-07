@@ -10,12 +10,12 @@ import 'package:boilerplate/presentation/bloc/login/login_state.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc({required this.repository})
       : super(const LoginState(status: LoginStatus.initail)) {
-    _posttoken = PostGenerateToken(repository: repository);
+    _postGenerateToken = PostGenerateToken(repository: repository);
 
     on<LoginButtonPressed>((event, emit) async {
       emit(state.copyWith(status: LoginStatus.loading));
 
-      final result = await _posttoken
+      final result = await _postGenerateToken
           .call(TokenRequest(email: event.username, password: event.password));
 
       result.fold(
@@ -28,7 +28,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       );
     });
   }
-  late UseCase _posttoken;
+  late UseCase _postGenerateToken;
   final AuthRepository repository;
-  void _addToValue() {}
+  
 }

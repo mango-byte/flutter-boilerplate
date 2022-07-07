@@ -82,25 +82,28 @@ class _LoginScreenState extends State<LoginScreen> {
                     builder: (context, state) {
                       return Form(
                           child: Column(children: [
-                        TextFormField(
-                          decoration:
-                              const InputDecoration(labelText: 'username'),
-                          controller: _usernameController,
-                        ),
-                        TextFormField(
-                          decoration:
-                              const InputDecoration(labelText: 'password'),
-                          controller: _passwordController,
-                          obscureText: true,
-                        ),
-                      ]));
-                    },
-                  ),
+                            TextFormField(
+                               decoration:
+                                  const InputDecoration(labelText: 'username'),
+                                  controller: _usernameController,
+                             ),
+                            TextFormField(
+                               decoration:
+                                  const InputDecoration(labelText: 'password'),
+                                  controller: _passwordController,
+                                  obscureText: true,
+                             ),
+                           ]
+                          )
+                       );
+                     },
+                ),
                   _buildSubmitButton(),
-                ],
-              ),
-            )),
-      ),
+               ],
+             ),
+            )
+         ),
+       ),
     );
   }
 

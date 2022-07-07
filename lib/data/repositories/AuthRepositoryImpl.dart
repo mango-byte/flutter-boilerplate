@@ -1,6 +1,7 @@
-import 'package:boilerplate/data/models/auth_request.dart';
+
 import 'package:boilerplate/domain/entities/token_response.dart';
 import 'package:boilerplate/domain/usecases/post_generate_token.dart';
+import 'package:boilerplate/domain/usecases/post_refresh_token.dart';
 import 'package:boilerplate/domain/usecases/post_register_user.dart';
 import 'package:dartz/dartz.dart';
 import 'package:boilerplate/data/datasources/auth_datasource.dart';
@@ -41,5 +42,12 @@ class AuthRepositoryImpl implements AuthRepository {
     final result =
         await dataSource.generateToken(request.email, request.password);
     return Right(result.toEntity());
+  }
+
+  @override
+  Future<Either<ServerFailure, TokenResponse>> refreshToken(
+      RefreshTokenRequest request) async {
+       final result = await dataSource.refreshToken(request);
+       return Right(result.toEntity());
   }
 }
