@@ -1,13 +1,10 @@
 
 import 'dart:developer';
-
 import 'package:boilerplate/domain/repositories/AuthRepository.dart';
 import 'package:boilerplate/domain/usecases/post_register_user.dart';
 import 'package:boilerplate/domain/usecases/post_verify_email.dart';
 import 'package:boilerplate/domain/usecases/use_case.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:rxdart/rxdart.dart';
 import 'package:boilerplate/presentation/bloc/register/register.dart';
 
