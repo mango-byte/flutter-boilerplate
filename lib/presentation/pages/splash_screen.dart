@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:boilerplate/presentation/pages/home_screen.dart';
+import 'package:boilerplate/presentation/pages/main_screen.dart';
 import 'package:boilerplate/presentation/pages/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:boilerplate/config/util/TransitionUtil.dart';
@@ -24,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _startTimer() {
     Timer(const Duration(seconds: 2), () async {
-      TransitionUtil.replace(context, const RegisterScreen(), true);
+      TransitionUtil.replace(context, const MainScreen(), true);
     });
   }
 

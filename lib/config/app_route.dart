@@ -1,4 +1,5 @@
 import 'package:boilerplate/presentation/pages/home_screen.dart';
+import 'package:boilerplate/presentation/pages/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:boilerplate/presentation/pages/settings_screen.dart';
 import 'package:boilerplate/presentation/pages/splash_screen.dart';
