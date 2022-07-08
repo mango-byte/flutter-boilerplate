@@ -29,7 +29,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _confirmPasswordController = TextEditingController();
   final TextEditingController _otpController = TextEditingController();
 
-
   late RegisterBloc bloc;
   late AuthRepository repository;
   late UseCase useCase;

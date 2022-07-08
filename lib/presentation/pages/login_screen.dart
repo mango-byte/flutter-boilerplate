@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:boilerplate/presentation/bloc/login/login_bloc.dart';
 import 'package:boilerplate/presentation/bloc/login/login_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wc_form_validators/wc_form_validators.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -24,6 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   late LoginBloc _loginBloc;
   late AuthRepository repository;
   late UseCase useCase;
+  final formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -81,47 +83,73 @@ class _LoginScreenState extends State<LoginScreen> {
                   BlocBuilder<LoginBloc, LoginState>(
                     builder: (context, state) {
                       return Form(
-                          child: Column(children: [
-                            TextFormField(
-                               decoration:
-                                  const InputDecoration(labelText: 'username'),
-                                  controller: _usernameController,
-                             ),
-                            TextFormField(
-                               decoration:
-                                  const InputDecoration(labelText: 'password'),
-                                  controller: _passwordController,
-                                  obscureText: true,
-                             ),
-                           ]
-                          )
-                       );
-                     },
-                ),
+                          key: formKey,
+                          child: Column(children: <Widget>[
+                            emailField(),
+                            passwordField(),
+                          ]));
+                    },
+                  ),
                   _buildSubmitButton(),
-               ],
-             ),
-            )
-         ),
-       ),
+                ],
+              ),
+            )),
+      ),
     );
   }
 
-  Widget _buildSubmitButton() => BlocBuilder<LoginBloc, LoginState>(
-    builder: (context, state) {
-      return Padding(
-        padding: const EdgeInsets.only(top: 30.0, bottom: 20.0),
-          child: ElevatedButton(
-            child: const Text('Login'),
-            onPressed: () {
-              _loginBloc.add(LoginButtonPressed(
-                  username: _usernameController.text,
-                  password: _passwordController.text));
-              },
-          )
+  Widget emailField() {
+    return StreamBuilder(
+      builder: (context, snapshot) {
+        return TextFormField(
+          controller: _usernameController,
+          keyboardType: TextInputType.emailAddress,
+          decoration: const InputDecoration(
+            hintText: 'ypu@example.com',
+            labelText: 'Email Address',
+            border: UnderlineInputBorder(
+                borderSide: BorderSide(width: 1, color: Colors.green)),
+          ),
+          validator: Validators.compose([
+            Validators.required('email is required'),
+            Validators.email('invalid email')
+          ]),
         );
-      }
-  );
+      },
+    );
+  }
+
+  Widget passwordField() {
+    return StreamBuilder(builder: (context, snapshot) {
+      return TextFormField(
+        obscureText: true,
+        controller: _passwordController,
+        decoration: const InputDecoration(
+          hintText: 'Password',
+          labelText: 'Password',
+        ),
+        validator: Validators.compose([
+          Validators.required('password is required'),
+        ]),
+      );
+    });
+  }
+
+  Widget _buildSubmitButton() =>
+      BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
+        return Padding(
+            padding: const EdgeInsets.only(top: 30.0, bottom: 20.0),
+            child: ElevatedButton(
+              child: const Text('Login'),
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  _loginBloc.add(LoginButtonPressed(
+                      username: _usernameController.text,
+                      password: _passwordController.text));
+                }
+              },
+            ));
+      });
 
   showLoaderDialog(BuildContext context) {
     AlertDialog alert = AlertDialog(
