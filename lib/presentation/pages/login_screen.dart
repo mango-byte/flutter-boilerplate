@@ -5,7 +5,7 @@ import 'package:boilerplate/data/repositories/AuthRepositoryImpl.dart';
 import 'package:boilerplate/domain/repositories/AuthRepository.dart';
 import 'package:boilerplate/domain/usecases/use_case.dart';
 import 'package:boilerplate/presentation/bloc/login/login_event.dart';
-import 'package:boilerplate/presentation/pages/home_screen.dart';
+import 'package:boilerplate/presentation/pages/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:boilerplate/presentation/bloc/login/login_bloc.dart';
 import 'package:boilerplate/presentation/bloc/login/login_state.dart';
@@ -55,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   showLoaderDialog(context);
                   break;
                 case LoginStatus.loginSuccess:
-                  TransitionUtil.replace(context, const HomeScreen(), false);
+                  TransitionUtil.replace(context, const MainScreen(), false);
                   break;
                 default:
                   break;

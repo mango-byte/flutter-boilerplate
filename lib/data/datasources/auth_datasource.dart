@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:boilerplate/data/dio/dio_endpoint.dart';
 import 'package:boilerplate/data/dio/dio_service.dart';
 import 'package:boilerplate/data/models/register_model.dart';
